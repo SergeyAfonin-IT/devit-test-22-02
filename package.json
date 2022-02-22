@@ -1,0 +1,19 @@
+{
+  "name": "test-project-22-02-2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": [
+    "packages/client",
+    "packages/server"
+  ],
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna clean -y && lerna bootstrap --use-workspaces",
+    "server:dev": "yarn workspace server start:dev",
+    "client:dev": "yarn workspace client start"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
