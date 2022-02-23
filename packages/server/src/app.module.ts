@@ -6,6 +6,8 @@ import { TasksController } from './tasks/tasks.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './tasks/task.entity';
 import { S3Service } from './s3/s3.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -20,6 +22,9 @@ import { S3Service } from './s3/s3.service';
       useNewUrlParser: true,
     }),
     TypeOrmModule.forFeature([Task]),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../', 'client', 'build'),
+    }),
   ],
   controllers: [AppController, TasksController],
   providers: [AppService, S3Service],

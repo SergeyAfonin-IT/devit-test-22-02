@@ -11,7 +11,8 @@
   "scripts": {
     "bootstrap": "lerna clean -y && lerna bootstrap --use-workspaces",
     "server:dev": "yarn workspace server start:dev",
-    "client:dev": "yarn workspace client start"
+    "client:dev": "yarn workspace client start",
+    "start": "yarn workspace client build && yarn workspace server start"
   },
   "devDependencies": {
     "lerna": "^4.0.0"

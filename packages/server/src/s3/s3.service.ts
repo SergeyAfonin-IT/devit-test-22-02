@@ -37,15 +37,8 @@ export class S3Service {
       },
     };
 
-    console.log('params');
-    console.log(params);
-
     try {
       const s3Response = await this.s3.upload(params).promise();
-
-      console.log('s3Response');
-      console.log(s3Response);
-
       return s3Response?.Location;
     } catch (e) {
       console.log(e);

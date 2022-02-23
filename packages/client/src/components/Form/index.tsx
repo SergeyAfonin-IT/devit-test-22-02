@@ -26,8 +26,6 @@ export function Form() {
     }
   };
 
-  console.log(image)
-
   return (
     <Card sectioned>
       <Stack vertical spacing="loose">
