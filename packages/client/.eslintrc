@@ -1,0 +1,46 @@
+{
+  "extends": [
+    "plugin:@shopify/react",
+    "plugin:@shopify/polaris",
+    "plugin:@shopify/typescript",
+    "plugin:@shopify/jest",
+    "plugin:@shopify/webpack",
+    "eslint:recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "import/no-unresolved": "off",
+    "no-prototype-builtins": "off",
+    "no-unused-vars": "error",
+    "no-import-assign": "off",
+    "dot-notation": "off",
+    "@shopify/strict-component-boundaries": "off",
+    "@shopify/binary-assignment-parens": "off",
+    "react/no-array-index-key": "off",
+    "no-console": "off",
+    "prettier/prettier": 0
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "requireConfigFile": false
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "overrides": [
+    {
+      "files": [ "*.test.*" ],
+      "rules": {
+        "shopify/jsx-no-hardcoded-content": "off"
+      }
+    }
+  ]
+}

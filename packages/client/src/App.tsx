@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Page } from "@shopify/polaris";
+import { useDispatch } from "react-redux";
+
+import { Form } from "./components/Form";
+import List from "./components/List";
+import { fetchTasks } from "./store/tasks";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React {process.env.PORT} !!
-        </a>
-      </header>
-    </div>
+    <Page title="Tasks List" narrowWidth>
+      <Form />
+      <List />
+    </Page>
   );
 }
 

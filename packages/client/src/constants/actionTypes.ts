@@ -1,0 +1,5 @@
+export const TASK_ACTIONS = {
+  FETCH: "TASKS__FETCH",
+  ADD: "TASKS__ADD",
+  DELETE: "TASKS__DELETE",
+};
