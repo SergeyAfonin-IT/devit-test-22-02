@@ -1,32 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
-import {
-  Banner,
-  Caption,
-  DropZone,
-  List,
-  Stack,
-  Thumbnail,
-} from "@shopify/polaris";
+import React, {useCallback, useState} from "react";
+import {Banner, Caption, DropZone, List, Stack, Thumbnail,} from "@shopify/polaris";
 
-import { ImageInputProps } from "../../interfaces";
+import {ImageInputProps} from "../../interfaces";
 
-const ImageInput: React.FC<ImageInputProps> = ({ onChange }) => {
-  const [file, setFile] = useState<File | null>(null);
+const ImageInput: React.FC<ImageInputProps> = ({ onChange, file }) => {
   const [rejectedFiles, setRejectedFiles] = useState<File[]>([]);
   const hasError = rejectedFiles.length > 0;
 
-  useEffect(() => {
-    if (file !== null) {
-      onChange(file);
-    }
-  }, [onChange, file]);
-
   const handleDrop = useCallback(
     (_droppedFiles, acceptedFiles, rejectedFiles) => {
-      setFile(acceptedFiles[0]);
+      onChange(acceptedFiles[0]);
       setRejectedFiles(rejectedFiles);
     },
-    []
+    [onChange]
   );
 
   const fileUpload = file === null && <DropZone.FileUpload />;

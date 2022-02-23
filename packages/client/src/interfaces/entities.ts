@@ -6,11 +6,6 @@ export interface TaskItem {
   image: string;
 }
 
-export interface TaskPayload {
-  name: string;
-  image: string;
-}
-
 export interface TasksState {
   isLoading: boolean;
   isLoaded: boolean;

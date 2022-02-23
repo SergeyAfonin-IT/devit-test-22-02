@@ -14,16 +14,16 @@ export function Form() {
   const [image, setImage] = useState<File | null>(null);
 
   const handleSubmit = () => {
-    const payload = {
-      name: name.trim(),
-      image: "",
-    };
+    if (name.trim().length !== 0 && image !== null) {
+      const data = new FormData();
+      data.append('name', name.trim())
+      data.append('image', image)
 
-    if (payload.name.length !== 0) {
-      dispatch(addTask(payload));
+      dispatch(addTask(data));
+
+      setName("");
+      setImage(null)
     }
-
-    setName("");
   };
 
   console.log(image)
@@ -31,7 +31,7 @@ export function Form() {
   return (
     <Card sectioned>
       <Stack vertical spacing="loose">
-        <ImageInput onChange={(file) => setImage(file)} />
+        <ImageInput onChange={(file) => setImage(file)} file={image} />
 
         <TextField
           value={name}

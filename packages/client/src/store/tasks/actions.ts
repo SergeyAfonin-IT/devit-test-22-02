@@ -1,6 +1,5 @@
-import { createRequestAction } from "../common/createRequestAction";
-import { TASK_ACTIONS } from "../../constants/actionTypes";
-import { TaskPayload } from "../../interfaces";
+import {createRequestAction} from "../common/createRequestAction";
+import {TASK_ACTIONS} from "../../constants/actionTypes";
 
 export const fetchTasksAction = createRequestAction(TASK_ACTIONS.FETCH, () => ({
   request: {
@@ -10,13 +9,11 @@ export const fetchTasksAction = createRequestAction(TASK_ACTIONS.FETCH, () => ({
 
 export const addTaskAction = createRequestAction(
   TASK_ACTIONS.ADD,
-  (task: TaskPayload) => ({
+  (task: FormData) => ({
     request: {
       method: "POST",
       url: "/tasks",
-      data: {
-        ...task,
-      },
+      data: task,
     },
   })
 );
