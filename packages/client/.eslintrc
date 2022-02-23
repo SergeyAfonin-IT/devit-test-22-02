@@ -22,7 +22,8 @@
     "@shopify/binary-assignment-parens": "off",
     "react/no-array-index-key": "off",
     "no-console": "off",
-    "prettier/prettier": 0
+    "prettier/prettier": 0,
+    "no-negated-condition": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2020,

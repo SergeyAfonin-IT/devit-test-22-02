@@ -27,22 +27,29 @@ const fetchTasksSuccessHandler = (
 
 const addTaskSuccessHandler = (
   state: TasksState,
-  { payload: { data: tasks = [] } }
-) => ({
-  ...state,
-  tasks: tasks || [],
-  isLoading: false,
-});
+  { payload }
+) => {
+  const tasks = state.tasks;
+  const task = payload.data;
 
-const deleteTaskSuccessHandler = (state: TasksState, { payload }) => ({
-  ...state,
-  tasks: state.tasks.filter((item) => item.id !== payload.data.id),
-  isLoading: false,
-});
+  return {
+    ...state,
+    tasks: [...tasks, task],
+    isLoading: false,
+  }
+};
+
+const deleteTaskSuccessHandler = (state: TasksState, { payload }) => {
+  const newTasks = payload.data.value !== null ? state.tasks.filter((item) => item.id !== payload.data.id) : state.tasks
+
+  return {
+    ...state,
+    tasks: newTasks,
+    isLoading: false,
+  }
+};
 
 const requestFailHandler = (state: TasksState) => {
-  console.log("requestFailHandler");
-
   return {
     ...state,
     isLoading: false,
